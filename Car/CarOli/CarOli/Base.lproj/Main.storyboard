@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aB2-2E-sdj" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="613"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="二级品牌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BxI-Q8-XeR">
                                                 <rect key="frame" x="15" y="20" width="70" height="21"/>
@@ -60,10 +60,23 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OT3-Nb-A0r">
+                                                <rect key="frame" x="0.0" y="313" width="320" height="300"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="wGZ-E1-LaR"/>
+                                                </constraints>
+                                            </tableView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptV-x5-pa0">
+                                                <rect key="frame" x="136" y="249" width="48" height="30"/>
+                                                <state key="normal" title="Search"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="qSI-LW-2NL" firstAttribute="top" secondItem="BxI-Q8-XeR" secondAttribute="bottom" constant="12" id="4Wi-ak-cq3"/>
+                                            <constraint firstItem="OT3-Nb-A0r" firstAttribute="top" secondItem="ptV-x5-pa0" secondAttribute="bottom" constant="34" id="5NU-N6-hod"/>
+                                            <constraint firstItem="ptV-x5-pa0" firstAttribute="top" secondItem="hC8-B9-gf6" secondAttribute="bottom" constant="43" id="9Br-zt-ktV"/>
                                             <constraint firstItem="RjQ-8t-xg9" firstAttribute="top" secondItem="qSI-LW-2NL" secondAttribute="bottom" constant="12" id="AbZ-wk-gsm"/>
                                             <constraint firstItem="qSI-LW-2NL" firstAttribute="leading" secondItem="BxI-Q8-XeR" secondAttribute="leading" id="BhM-cj-ud8"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bYQ-c4-UrU" secondAttribute="trailing" constant="20" symbolic="YES" id="Eim-AL-wCA"/>
@@ -74,17 +87,20 @@
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hC8-B9-gf6" secondAttribute="trailing" constant="20" symbolic="YES" id="NgH-9M-Jct"/>
                                             <constraint firstItem="qSI-LW-2NL" firstAttribute="width" secondItem="BxI-Q8-XeR" secondAttribute="width" id="QUp-Ry-T7N"/>
                                             <constraint firstItem="hC8-B9-gf6" firstAttribute="top" secondItem="4Xb-Xa-ByR" secondAttribute="bottom" constant="12" id="TPP-sX-BNH"/>
-                                            <constraint firstAttribute="height" constant="300" id="V2N-eX-3Y1"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qSI-LW-2NL" secondAttribute="trailing" constant="20" symbolic="YES" id="Y6B-Zg-tYh"/>
                                             <constraint firstItem="bYQ-c4-UrU" firstAttribute="top" secondItem="RjQ-8t-xg9" secondAttribute="bottom" constant="12" id="ZVl-eh-Pn9"/>
                                             <constraint firstItem="BxI-Q8-XeR" firstAttribute="top" secondItem="aB2-2E-sdj" secondAttribute="top" constant="20" id="a6z-lg-vIg"/>
                                             <constraint firstItem="bYQ-c4-UrU" firstAttribute="leading" secondItem="RjQ-8t-xg9" secondAttribute="leading" id="aiM-Tb-qoT"/>
                                             <constraint firstItem="4Xb-Xa-ByR" firstAttribute="width" secondItem="bYQ-c4-UrU" secondAttribute="width" id="anh-90-fu2"/>
+                                            <constraint firstAttribute="trailing" secondItem="OT3-Nb-A0r" secondAttribute="trailing" id="dua-Gl-sPp"/>
+                                            <constraint firstItem="ptV-x5-pa0" firstAttribute="centerX" secondItem="aB2-2E-sdj" secondAttribute="centerX" id="eBa-08-DeA"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4Xb-Xa-ByR" secondAttribute="trailing" constant="20" symbolic="YES" id="ega-iB-AOh"/>
                                             <constraint firstItem="RjQ-8t-xg9" firstAttribute="leading" secondItem="qSI-LW-2NL" secondAttribute="leading" id="fCo-zf-52e"/>
                                             <constraint firstItem="hC8-B9-gf6" firstAttribute="leading" secondItem="4Xb-Xa-ByR" secondAttribute="leading" id="fVh-GY-0oc"/>
                                             <constraint firstItem="4Xb-Xa-ByR" firstAttribute="top" secondItem="bYQ-c4-UrU" secondAttribute="bottom" constant="12" id="fvM-I1-zOc"/>
                                             <constraint firstItem="hC8-B9-gf6" firstAttribute="width" secondItem="4Xb-Xa-ByR" secondAttribute="width" id="hUk-R6-qkp"/>
+                                            <constraint firstAttribute="bottom" secondItem="OT3-Nb-A0r" secondAttribute="bottom" id="odB-le-wWu"/>
+                                            <constraint firstItem="OT3-Nb-A0r" firstAttribute="leading" secondItem="aB2-2E-sdj" secondAttribute="leading" id="px9-DO-tHX"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BxI-Q8-XeR" secondAttribute="trailing" constant="20" symbolic="YES" id="sUB-w5-gT3"/>
                                             <constraint firstItem="RjQ-8t-xg9" firstAttribute="width" secondItem="qSI-LW-2NL" secondAttribute="width" id="yl4-hL-yZu"/>
                                         </constraints>
@@ -108,6 +124,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="searchButton" destination="ptV-x5-pa0" id="uhR-4v-buF"/>
+                        <outlet property="tableView" destination="OT3-Nb-A0r" id="695-vF-XMu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
