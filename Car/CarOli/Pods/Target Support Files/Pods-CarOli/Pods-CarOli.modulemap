@@ -1,0 +1,6 @@
+framework module Pods_CarOli {
+  umbrella header "Pods-CarOli-umbrella.h"
+
+  export *
+  module * { export * }
+}

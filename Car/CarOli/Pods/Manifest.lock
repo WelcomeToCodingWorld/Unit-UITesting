@@ -1,0 +1,15 @@
+PODS:
+  - Alamofire (4.5.1)
+  - XMLDictionary (1.4.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - XMLDictionary
+
+SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
+
+PODFILE CHECKSUM: 9331351da786269a77f61a6616720db939d5e416
+
+COCOAPODS: 1.3.1
