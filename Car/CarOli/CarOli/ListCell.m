@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.contentView.backgroundColor = [UIColor lightGrayColor];
     // Initialization code
 }
 

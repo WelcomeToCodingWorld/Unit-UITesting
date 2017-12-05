@@ -31,6 +31,10 @@
 IB_DESIGNABLE
 @interface HHDropDownList : UIView <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic,assign)CGPoint indicatiorPosition;
+@property (nonatomic,assign)CGPoint textPosition;
+
+@property (nonatomic,copy)IBInspectable NSString*  placeHolder;
 @property (assign, nonatomic) BOOL haveBorderLine;      /**< 边线 */
 
 @property (strong, nonatomic) UIColor *highlightColor;  /**< 指示三角 和 高亮文本 的颜色 */

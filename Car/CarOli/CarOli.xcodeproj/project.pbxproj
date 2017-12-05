@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		076B38CF1FD6AFCB00277CC7 /* DropdownListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076B38CE1FD6AFCB00277CC7 /* DropdownListView.swift */; };
 		07B40A6F1FD5B8320079D079 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B40A6E1FD5B8320079D079 /* Util.swift */; };
 		0A6524841FCCEE74005FEF36 /* text.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0A6524831FCCEE73005FEF36 /* text.txt */; };
 		0AC7977F1FCC094C00D960B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7977E1FCC094C00D960B2 /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		076B38CE1FD6AFCB00277CC7 /* DropdownListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DropdownListView.swift; path = CarOli/DropdownListView.swift; sourceTree = SOURCE_ROOT; };
 		07B40A6E1FD5B8320079D079 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		0A6524831FCCEE73005FEF36 /* text.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = text.txt; sourceTree = "<group>"; };
 		0A6524871FCD02C0005FEF36 /* CarOli-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CarOli-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				3A9A8CA61FD62F92002CE05C /* ListCell.h */,
 				3A9A8CA41FD62F91002CE05C /* ListCell.m */,
 				3A9A8CA81FD62F92002CE05C /* ListCell.xib */,
+				076B38CE1FD6AFCB00277CC7 /* DropdownListView.swift */,
 			);
 			path = DropdwonListView;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				0AC797811FCC094C00D960B2 /* ViewController.swift in Sources */,
 				3A9A8CAD1FD651B2002CE05C /* CarCell.swift in Sources */,
 				3A9A8CAA1FD62F92002CE05C /* HHDropDownList.m in Sources */,
+				076B38CF1FD6AFCB00277CC7 /* DropdownListView.swift in Sources */,
 				0AC7977F1FCC094C00D960B2 /* AppDelegate.swift in Sources */,
 				3A9A8CA91FD62F92002CE05C /* ListCell.m in Sources */,
 				3A9A8CBB1FD682F5002CE05C /* TestViewController.swift in Sources */,

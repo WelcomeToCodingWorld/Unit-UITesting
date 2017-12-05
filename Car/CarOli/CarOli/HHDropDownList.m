@@ -30,19 +30,7 @@
     self = [super initWithFrame:frame];
     
     if (self) {
-        
-        /**< 默认属性 */
-        _indicatorsArray = [[NSMutableArray alloc] init];
-        _isShow = NO;
-        _isExclusive = NO;
-        _haveBorderLine = YES;
-        _highlightColor = [UIColor colorWithRed:252/255.0 green:141/255.0 blue:137/255.0 alpha:1.0];
-        
-        [self setUpUI];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(ADropDownListHasDroppedDown:) name:@"thisDropDownListHasDroppedDown"
-                                                   object:nil];
+        [self initView];
     }
     return self;
 }
@@ -53,7 +41,7 @@
     [[self layer] setBorderColor:[[UIColor colorWithRed:209/255.0 green:209/255.0 blue:209/255.0 alpha:1.0] CGColor]];
     
     _indicatorLayer = [self createIndicatorWithColor:_highlightColor
-                                         andPosition:CGPointMake(self.frame.size.width*6.0/7.0, self.frame.size.height/2.0)];
+                                         andPosition:CGPointMake(self.frame.size.width- 8, self.frame.size.height/2.0)];
     
     [self.layer addSublayer:_indicatorLayer];
     
@@ -61,7 +49,7 @@
     [self addGestureRecognizer:tapGesture];
     
     CGPoint position = CGPointMake(self.frame.size.width/2.0, self.frame.size.height/2.0);
-    _textLayer = [self createTextLayerWithText:@"iMac" color:[UIColor blackColor] withPosition:position];
+    _textLayer = [self createTextLayerWithText:self.placeHolder color:[UIColor blackColor] withPosition:position];
     [self.layer addSublayer:_textLayer];
     
     
@@ -76,12 +64,35 @@
     [_tableView registerNib:[UINib nibWithNibName:@"ListCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
 }
 
+- (void)initView {
+    /**< 默认属性 */
+    self.placeHolder = @"请选择";
+    _indicatorsArray = [[NSMutableArray alloc] init];
+    _isShow = NO;
+    _isExclusive = NO;
+    _haveBorderLine = YES;
+    _highlightColor = [UIColor colorWithRed:252/255.0 green:141/255.0 blue:137/255.0 alpha:1.0];
+    
+    [self setUpUI];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(ADropDownListHasDroppedDown:) name:@"thisDropDownListHasDroppedDown"
+                                               object:nil];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self initView];
+    }
+    return self;
+}
+
 - (void)layoutSubviews {
     
     [super layoutSubviews];
-    
     _indicatorLayer.fillColor = _highlightColor.CGColor;
-    
     if (!_haveBorderLine) {
         
         [self.layer setBorderWidth:0.0];
@@ -245,7 +256,7 @@
 
 - (void)reloadListData {
         
-    if ([self.delegate respondsToSelector:@selector(listDataForDropDownList:)]) {
+    if ([self.dataSource respondsToSelector:@selector(listDataForDropDownList:)]) {
         
         _data = [self.dataSource listDataForDropDownList:self];
     }
@@ -357,7 +368,22 @@
                                                           userInfo:@{@"dropDownList":self}];
     }
 }
+#pragma mark - Public
+- (CGPoint)indicatiorPosition {
+    return _indicatorLayer.position;
+}
 
+- (void)setIndicatiorPosition:(CGPoint)indicatiorPosition {
+    _indicatorLayer.position = indicatiorPosition;
+}
+
+- (CGPoint)textPosition {
+    return _textLayer.position;
+}
+
+- (void)setTextPosition:(CGPoint)textPosition {
+    _textLayer.position = textPosition;
+}
 
 #pragma mark - Private
 - (CGSize)p_calculateTitleSizeWithText:(NSString *)text {
@@ -370,6 +396,8 @@
     
     return size;
 }
+
+
 
 @end
 
