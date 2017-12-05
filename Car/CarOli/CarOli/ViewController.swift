@@ -12,20 +12,73 @@ import Alamofire
 class ViewController: UIViewController,UITextFieldDelegate,UITextViewDelegate {
 
     
+    @IBOutlet var dropDownLists: [HHDropDownList]!
     var xmlParser : XMLParser?
     
     @IBOutlet var searchButton: UIButton!
     @IBOutlet var tableView: UITableView!
+    
+    @IBOutlet var firBrandTF: UITextField!
+    
+    
+    let cellID = "TableViewCell"
+    
+    
+    var cars = [Car]() {
+        didSet {
+            printLog("cars did set to:\(cars)")
+            if cars.isEmpty {
+                manufactures.removeAll()
+                serieses.removeAll()
+                models.removeAll()
+                years.removeAll()
+                displacements.removeAll()
+                gearboxes.removeAll()
+            }
+        }
+    }
+    
+    // for displacement
+    var manufactures = [String]()
+    var serieses = [String]()
+    var models = [String]()
+    var years = [String]()
+    var displacements = [String]()
+    var gearboxes = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        for (idx,dropDownItm) in dropDownLists.enumerated() {
+//            dropDownLists[idx] = HHDropDownList.init(frame: dropDownItm.frame)
+//            dropDownItm.backgroundColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1.0)
+//            dropDownItm.highlightColor = UIColor(red: 125/255.0, green: 238/255.0, blue: 161/255.0, alpha: 1.0)
+//            dropDownItm.haveBorderLine = true
+//            dropDownItm.isExclusive = true
+//            dropDownItm.delegate = self
+//            dropDownItm.dataSource = self
+//            dropDownItm.tag = idx
+        }
         setupTable()
         searchTest()
-//        search()
     }
+    
+    @IBAction func filt(_ sender: Any) {
+    }
+    
+    @IBAction func search(_ sender: Any) {
+        cars.removeAll()
+        self.searchTest()
+    }
+    
     
     func setupTable() {
         tableView.tableFooterView = UIView()
-        
+        tableView.layer.borderWidth = 1.0
+        tableView.layer.borderColor = UIColor.lightGray.cgColor
+        tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 218
+        tableView.register(UINib.init(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: cellID)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -53,7 +106,7 @@ class ViewController: UIViewController,UITextFieldDelegate,UITextViewDelegate {
                     }
                     if let dic = arr.first {
                         let modelsId = dic["modelsId"] as! String
-                        
+                        printLog(modelsId)
                         Alamofire.request("http://oilchooser.fuchs.com.cn:90/fuchs/level/salesName/getSalesNames?brandId=\(brand.encode())&manufacturersId=\(manufacturersId.encode())&modelId=\(modelsId.encode())").responseJSON(completionHandler: { (response) in
                             guard let dic = response.result.value as? [String: Any],let arr = dic["value"] as? Array<Dictionary<String,Any>> else {
                                 return
@@ -61,6 +114,7 @@ class ViewController: UIViewController,UITextFieldDelegate,UITextViewDelegate {
                             
                             if let dic = arr.first {
                                 let salesName = dic["salesName"] as! String
+                                printLog(salesName)
                                 Alamofire.request("http://oilchooser.fuchs.com.cn:90/fuchs/level/year/getYears?brandId=\(brand.encode())&manufacturersId=\(manufacturersId.encode())&modelId=\(modelsId.encode())&salesName=\(salesName.encode())").responseJSON(completionHandler: { (response) in
                                     guard let dic = response.result.value as? [String: Any],let arr = dic["value"] as? Array<Dictionary<String,Any>> else {
                                         return
@@ -69,22 +123,78 @@ class ViewController: UIViewController,UITextFieldDelegate,UITextViewDelegate {
                                     if let dic = arr.first {
                                         let compressId = dic["compressId"] as! String
                                         
+                                        let year = dic["yearFull"] as! String
                                         Alamofire.request("http://oilchooser.fuchs.com.cn:90/fuchs/level/fuchs/getData", method: .post, parameters: ["compressId":compressId]).responseData(completionHandler: { (response) in
-                                            printLog(response.request?.url)
-                                            if let data = response.data {
-//                                                printLog(String.init(data: data, encoding: .utf8))
-                                                self.xmlParser = XMLParser(data: data)
-                                                self.xmlParser?.shouldProcessNamespaces = true
-                                                self.xmlParser?.shouldReportNamespacePrefixes = true
-                                                self.xmlParser?.shouldResolveExternalEntities = true
-                                                self.xmlParser?.shouldGroupAccessibilityChildren = true
-                                                self.xmlParser?.delegate = self
-                                                self.xmlParser?.parse()
-                                            }else {
-                                                printLog(response.error?.localizedDescription as Any)
+                                            let string = String.init(data: response.data!, encoding: .utf8)!
+                                            guard let startRange = string.range(of: "发动机油") else {
+                                                return
+                                            }
+                                            guard let endRange = string.range(of: "变速箱油") else {
+                                                return
+                                            }
+                                            let subString = String(string[startRange.upperBound ..< endRange.lowerBound])
+                                            let arr = subString.components(separatedBy: "</tr>")
+                                            for index in 0 ..< arr.count - 1 {
+                                                let subString = arr[index]
+                                                guard let range = subString.range(of: "L") else {
+                                                    continue
+                                                }
+                                                let result = subString[subString.index(range.lowerBound, offsetBy: -5) ..< range.lowerBound]
+                                                let text = "\(brand);\(manufacturersId);\(modelsId);\(salesName);\(year);\(result)\n\n"
+                                                let components = salesName.components(separatedBy: ",")
+                                                var displacement : String?
+                                                var gearBox : String?
+                                                
+                                                for (idx,component) in components.enumerated() {
+                                                    let subComponents = component.components(separatedBy: " ")
+                                                    if idx == 0 {
+                                                        displacement = subComponents.first
+                                                        gearBox = subComponents.last
+                                                        
+                                                    }else {
+                                                        if let lastComponent = subComponents.last {
+                                                            let car = Car(brand: brand, manufacture: manufacturersId, series:modelsId, model: lastComponent, year: year, displacement: displacement , gearbox:gearBox ,oilConsumption: String.init(result))
+                                                            self.cars.append(car)
+                                                            self.manufactures.append(car.manufacture)
+                                                            self.serieses.append(car.series)
+                                                            self.models.append(car.model)
+                                                            self.years.append(car.year)
+                                                            if let dp = car.displacement {
+                                                                self.displacements.append(dp)
+                                                            }
+                                                            if let gb = car.gearbox {
+                                                                self.gearboxes.append(gb)
+                                                            }
+                                                            if !self.models.contains(lastComponent) {
+                                                                self.models.append(lastComponent)
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                self.tableView.reloadData()
+                                                printLog(text)
                                             }
                                         })
                                     }
+//                                    if let dic = arr.first {
+//                                        let compressId = dic["compressId"] as! String
+//
+//                                        Alamofire.request("http://oilchooser.fuchs.com.cn:90/fuchs/level/fuchs/getData", method: .post, parameters: ["compressId":compressId]).responseData(completionHandler: { (response) in
+//                                            printLog(response.request?.url)
+//                                            if let data = response.data {
+////                                                printLog(String.init(data: data, encoding: .utf8))
+//                                                self.xmlParser = XMLParser(data: data)
+//                                                self.xmlParser?.shouldProcessNamespaces = true
+//                                                self.xmlParser?.shouldReportNamespacePrefixes = true
+//                                                self.xmlParser?.shouldResolveExternalEntities = true
+//                                                self.xmlParser?.shouldGroupAccessibilityChildren = true
+//                                                self.xmlParser?.delegate = self
+//                                                self.xmlParser?.parse()
+//                                            }else {
+//                                                printLog(response.error?.localizedDescription as Any)
+//                                            }
+//                                        })
+//                                    }
                                 })
                             }
                         })
@@ -110,7 +220,6 @@ class ViewController: UIViewController,UITextFieldDelegate,UITextViewDelegate {
                     }
                     for dic in arr {
                         let modelsId = dic["modelsId"] as! String
-                       
                         Alamofire.request("http://oilchooser.fuchs.com.cn:90/fuchs/level/salesName/getSalesNames?brandId=\(brand.encode())&manufacturersId=\(manufacturersId.encode())&modelId=\(modelsId.encode())").responseJSON(completionHandler: { (response) in
                             guard let dic = response.result.value as? [String: Any],let arr = dic["value"] as? Array<Dictionary<String,Any>> else {
                                 return
@@ -167,6 +276,50 @@ class ViewController: UIViewController,UITextFieldDelegate,UITextViewDelegate {
 
 }
 
+// MARK: UITableViewDataSource
+extension ViewController:UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cars.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? TableViewCell else {
+            fatalError("Can not found a cell")
+        }
+        cell.car = cars[indexPath.row]
+        return cell
+    }
+}
+
+// MARK: DropDownDelegate
+extension ViewController:HHDropDownListDelegate {
+    
+}
+
+// MARK: DropDownDataSource
+extension ViewController:HHDropDownListDataSource {
+    func listData(for dropDownList: HHDropDownList!) -> [String]! {
+        switch dropDownList.tag {
+        case 0:
+            return manufactures
+        case 1:
+            return serieses
+        case 2:
+            return models
+        case 3:
+            return years
+        case 4:
+            return displacements
+        case 5:
+            return gearboxes
+        default:
+            return [String]()
+        }
+    }
+}
+
+
+// MARK: XMLParserDelegate
 extension ViewController:XMLParserDelegate {
     // MARK:- Handling XML
     // document
@@ -268,3 +421,15 @@ extension String {
 }
 
 
+
+struct Car {
+    var brand:String
+    var manufacture:String
+    var series:String
+    var model:String
+    var year:String
+    var displacement:String?
+    var gearbox : String?
+    var oilConsumption:String?
+    
+}

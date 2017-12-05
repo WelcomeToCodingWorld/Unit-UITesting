@@ -13,7 +13,7 @@
 @protocol HHDropDownListDataSource <NSObject>
 
 @required
-- (NSArray *)listDataForDropDownList:(HHDropDownList *)dropDownList;
+- (NSArray<NSString*> *)listDataForDropDownList:(HHDropDownList *)dropDownList;
 
 @optional
 
@@ -28,6 +28,7 @@
 @end
 
 
+IB_DESIGNABLE
 @interface HHDropDownList : UIView <UITableViewDataSource, UITableViewDelegate>
 
 @property (assign, nonatomic) BOOL haveBorderLine;      /**< 边线 */

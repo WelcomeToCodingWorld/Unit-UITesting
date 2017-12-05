@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" rowHeight="235" id="KGk-i7-Jjw" customClass="TableViewCell" customModule="CarOli" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="235"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="234.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OilConsumption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8A9-HD-BJx">
+                        <rect key="frame" x="16" y="187" width="290" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="manufacture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnM-nt-hQa">
+                        <rect key="frame" x="15" y="48" width="97" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="displacement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qwm-2S-3iL">
+                        <rect key="frame" x="15" y="81" width="103" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="gearbox" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jxw-Cb-wCg">
+                        <rect key="frame" x="242" y="81" width="63" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="model" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48P-QP-qCK">
+                        <rect key="frame" x="15" y="147" width="48" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0f-2s-wZT">
+                        <rect key="frame" x="15" y="15" width="320" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="series" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ti-KD-bjw">
+                        <rect key="frame" x="259" y="48" width="46" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="year" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lvs-HP-koS">
+                        <rect key="frame" x="15" y="114" width="33" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="9Ti-KD-bjw" secondAttribute="trailing" constant="15" id="2he-T9-iIp"/>
+                    <constraint firstItem="C0f-2s-wZT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="AM7-Jw-OpT"/>
+                    <constraint firstItem="8A9-HD-BJx" firstAttribute="top" secondItem="48P-QP-qCK" secondAttribute="bottom" constant="19" id="Dre-Vj-Hlt"/>
+                    <constraint firstItem="Jxw-Cb-wCg" firstAttribute="top" secondItem="9Ti-KD-bjw" secondAttribute="bottom" constant="12" id="G0o-BC-VsN"/>
+                    <constraint firstAttribute="trailing" secondItem="8A9-HD-BJx" secondAttribute="trailing" constant="14" id="Giw-hZ-kBP"/>
+                    <constraint firstItem="8A9-HD-BJx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Q0a-Tq-wz4"/>
+                    <constraint firstAttribute="trailing" secondItem="Jxw-Cb-wCg" secondAttribute="trailing" constant="15" id="Q2K-6P-MUh"/>
+                    <constraint firstItem="48P-QP-qCK" firstAttribute="top" secondItem="Lvs-HP-koS" secondAttribute="bottom" constant="12" id="Xa9-We-pLa"/>
+                    <constraint firstItem="9Ti-KD-bjw" firstAttribute="top" secondItem="C0f-2s-wZT" secondAttribute="bottom" constant="12" id="ZFx-A4-1NQ"/>
+                    <constraint firstItem="Qwm-2S-3iL" firstAttribute="top" secondItem="AnM-nt-hQa" secondAttribute="bottom" constant="12" id="dDt-TF-m5I"/>
+                    <constraint firstAttribute="trailing" secondItem="C0f-2s-wZT" secondAttribute="trailing" constant="-15" id="fif-Vl-IHp"/>
+                    <constraint firstItem="Qwm-2S-3iL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="gn0-cb-Vog"/>
+                    <constraint firstItem="Lvs-HP-koS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="h4T-nz-Aby"/>
+                    <constraint firstItem="48P-QP-qCK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="kBo-6C-79C"/>
+                    <constraint firstItem="C0f-2s-wZT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="s0F-DW-cRh"/>
+                    <constraint firstItem="Lvs-HP-koS" firstAttribute="top" secondItem="Qwm-2S-3iL" secondAttribute="bottom" constant="12" id="txH-dP-HVy"/>
+                    <constraint firstAttribute="bottom" secondItem="8A9-HD-BJx" secondAttribute="bottom" constant="26.5" id="ukb-L0-RKB"/>
+                    <constraint firstItem="AnM-nt-hQa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="viS-J7-iX4"/>
+                    <constraint firstItem="AnM-nt-hQa" firstAttribute="top" secondItem="C0f-2s-wZT" secondAttribute="bottom" constant="12" id="zsb-2R-CcB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="brandLabel" destination="C0f-2s-wZT" id="YwZ-wP-l18"/>
+                <outlet property="displacementLabel" destination="Qwm-2S-3iL" id="MfD-cV-mZg"/>
+                <outlet property="gearboxLabel" destination="Jxw-Cb-wCg" id="sbF-kr-XuV"/>
+                <outlet property="manufactureLabel" destination="AnM-nt-hQa" id="zWC-uG-zQQ"/>
+                <outlet property="modelLabel" destination="48P-QP-qCK" id="H6x-GN-s8Y"/>
+                <outlet property="oilConsumptionLabel" destination="8A9-HD-BJx" id="xKd-UP-aBV"/>
+                <outlet property="seriesLabel" destination="9Ti-KD-bjw" id="Hhz-t3-mx7"/>
+                <outlet property="yearLabel" destination="Lvs-HP-koS" id="nU8-BU-j10"/>
+            </connections>
+            <point key="canvasLocation" x="179" y="102.5"/>
+        </tableViewCell>
+    </objects>
+</document>
