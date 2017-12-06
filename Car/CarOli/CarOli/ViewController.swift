@@ -176,7 +176,7 @@ class ViewController: UIViewController,UITextFieldDelegate,UITextViewDelegate {
                     guard let dic = response.result.value as? [String: Any],let arr = dic["value"] as? Array<Dictionary<String,Any>> else {
                         return
                     }
-                    for dic in arr {
+                    if let dic = arr.first {
                         let modelsId = dic["modelsId"] as! String
                         printLog(modelsId)
                         Alamofire.request("http://oilchooser.fuchs.com.cn:90/fuchs/level/salesName/getSalesNames?brandId=\(brand.encode())&manufacturersId=\(manufacturersId.encode())&modelId=\(modelsId.encode())").responseJSON(completionHandler: { (response) in

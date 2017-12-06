@@ -2,5 +2,4 @@ platform:ios,'9.0'
 target ‘CarOli’ do
 use_frameworks!
 pod 'Alamofire'
-pod 'XMLDictionary'
 end
